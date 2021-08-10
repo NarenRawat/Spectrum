@@ -1,0 +1,15 @@
+# Virtual environment
+venv/
+
+# Python cache
+__pycache__/
+
+# Test folder
+tests/
+
+# Editor config folder
+.vscode/
+
+# buildozer related files and folders
+.buildozer/
+bin/
