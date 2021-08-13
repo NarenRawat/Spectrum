@@ -25,6 +25,12 @@ class SpectrumApp(MDApp):
     def on_pause(self):
         return True
 
+    def toggle_theme_style(self, switch, value):
+        if value:
+            self.theme_cls.theme_style = 'Dark'
+        else:
+            self.theme_cls.theme_style = 'Light'
+
 
 if __name__ == '__main__':
     SpectrumApp().run()
