@@ -1,3 +1,12 @@
+#: import SlideTransition kivy.uix.screenmanager.SlideTransition
+
+#: import MusicScreen libs.baseclass.screens.MusicScreen
+#: import PlaylistsScreen libs.baseclass.screens.PlaylistsScreen
+#: import FavoritesScreen libs.baseclass.screens.FavoritesScreen
+#: import AboutScreen libs.baseclass.screens.AboutScreen
+#: import SettingsScreen libs.baseclass.screens.SettingsScreen
+
+
 <MainCard>:
     x: 0
     y: 0
@@ -24,5 +33,22 @@
     # MDBoxLayout # Toolbar
 
     ScreenManager:
+        id: main_card_screen_manager
+        transition: SlideTransition(duration=0.1, direction='right')
+
+        MusicScreen:
+        # MusicScreen
+
+        PlaylistsScreen:
+        # PlaylistsScreen
+
+        FavoritesScreen:
+        # FavoritesScreen
+
+        AboutScreen:
+        # AboutScreen
+
+        SettingsScreen:
+        # SettingsScreen
     # ScreenManager
 # MainCard
