@@ -6,26 +6,36 @@
     MenuButton:
         text: '    Music    '
         icon: 'music'
+        on_press:
+            root.parent.ids.main_card.ids.main_card_screen_manager.current = 'music_screen'
     # MenuButton
     
     MenuButton:
         text: '    Playlists'
         icon: 'bookshelf'
+        on_press:
+            root.parent.ids.main_card.ids.main_card_screen_manager.current = 'playlists_screen'
     # MenuButton
     
     MenuButton:
         text: '    Favorites'
         icon: 'heart'
+        on_press:
+            root.parent.ids.main_card.ids.main_card_screen_manager.current = 'favorites_screen'
     # MenuButton
     
     MenuButton:
         text: '    About    '
         icon: 'information'
+        on_press:
+            root.parent.ids.main_card.ids.main_card_screen_manager.current = 'about_screen'
     # MenuButton
     
     MenuButton:
         text: '    Settings '
         icon: 'cog'
+        on_press:
+            root.parent.ids.main_card.ids.main_card_screen_manager.current = 'settings_screen'
     # MenuButton
 # Menu
 

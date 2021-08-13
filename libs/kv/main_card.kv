@@ -26,6 +26,7 @@
         # MDIconButton
 
         MDLabel:
+            id: toolbar_title
             text: 'Music'
             bold: True
             font_size: '20sp'
@@ -35,6 +36,8 @@
     ScreenManager:
         id: main_card_screen_manager
         transition: SlideTransition(duration=0.1, direction='right')
+        on_current:
+            toolbar_title.text = self.current[:-7].capitalize()
 
         MusicScreen:
         # MusicScreen
