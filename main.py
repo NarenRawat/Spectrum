@@ -15,6 +15,13 @@ class SpectrumApp(MDApp):
         self.theme_cls.primary_palette = "Purple"
         self.theme_cls.primary_hue = '800'
 
+    def on_start(self):
+        (self.root.ids.main_card.ids.music_screen.
+            ids.music_screen_tabs.switch_tab(
+                self.root.ids.main_card.ids.
+                music_screen.ids.music_screen_tabs.
+                get_tab_list()[1]))
+
     def on_pause(self):
         return True
 

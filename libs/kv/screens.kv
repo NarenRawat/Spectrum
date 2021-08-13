@@ -1,8 +1,29 @@
+#: import SongsTab libs.baseclass.tabs.SongsTab
+#: import AlbumsTab libs.baseclass.tabs.AlbumsTab
+#: import ArtistsTab libs.baseclass.tabs.ArtistsTab
+
+
 <MusicScreen>:
     name: 'music_screen'
-    MDLabel:
-        text: 'music'
-        halign: 'center'
+
+    MDTabs:
+        id: music_screen_tabs
+        lock_swiping: True
+        tab_hint_x: True
+        tab_indicator_anim: True
+        anim_duration: 0.1
+        text_color_active: app.theme_cls.accent_color
+        text_color_normal: (1, 1, 1, 1)
+
+        AlbumsTab:
+        # AlbumsTab
+
+        SongsTab:
+        # SongsTab
+
+        ArtistsTab:
+        # ArtistsTab
+    # MDTabs
 # MusicScreen
 
 
