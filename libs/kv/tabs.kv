@@ -1,3 +1,6 @@
+#: import SongItem libs.baseclass.items.SongItem
+
+
 <AlbumsTab>:
     title: '[size=20sp]ALBUMS[/size]'
     MDLabel:
@@ -8,9 +11,23 @@
 
 <SongsTab>:
     title: '[size=20sp]SONGS[/size]'
-    MDLabel:
-        text: 'songs'
-        halign: 'center'
+    RecycleView:
+        id: songs_tab_rv
+        viewclass: 'SongItem'
+        do_scroll_x: False
+        always_overscroll: False
+        bar_width: '3dp'
+        smooth_scroll_end: 10
+
+        RecycleBoxLayout:
+            default_size: None, dp(80)
+            default_size_hint: 1, None
+            size_hint_y: None
+            height: self.minimum_height
+            spacing: '2dp'
+            orientation: 'vertical'
+        # RecycleBoxLayout
+    # RecycleView
 # SongsTab
 
 
