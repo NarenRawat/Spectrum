@@ -1,0 +1,64 @@
+<SongItem>:
+    size_hint_y: None
+    height: '80dp'
+    spacing: '2dp'
+    orientation: 'vertical'
+
+    MDBoxLayout:
+        orientation: 'horizontal'
+
+        SongItemRippleWidget:
+            orientation: 'horizontal'
+            ripple_color: app.theme_cls.opposite_bg_dark
+            spacing: '10dp'
+
+            on_release:
+                print(root.file_path)
+
+            MDBoxLayout:
+                padding: '5dp'
+                adaptive_size: True
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+                Image:
+                    texture: root.image_texture
+                    size_hint: None, None
+                    size: ('70dp', '70dp')
+                # Image
+            # MDBoxLayout
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                adaptive_height: True
+                spacing: '10dp'
+
+                MDLabel:
+                    text: root.title
+                    font_size: '20sp'
+                    shorten: True
+                    shorten_from: 'right'
+                    adaptive_height: True
+                # MDLabel
+
+                MDLabel:
+                    adaptive_height: True
+                    text: root.artist
+                    font_size: '18sp'
+                    shorten: True
+                    shorten_from: 'right'
+                # MDLabel
+            # MDBoxLayout
+        # SongItemRippleWidget
+
+        MDIconButton:
+            pos_hint: {'center_y': 0.5}
+            icon: 'dots-vertical'
+            on_release:
+                print(root.title)
+        # MDIconButton
+    # MDBoxLayout
+    
+    MDSeparator:
+    # MDSeparator
+# SongItem
