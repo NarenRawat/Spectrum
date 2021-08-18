@@ -6,6 +6,7 @@ from kivy.clock import mainthread
 from kivy.core.image import Image as CoreImage
 from kivy.lang.builder import Builder
 from kivymd.app import MDApp
+from kivy.properties import ObjectProperty, ListProperty
 from mutagen import File
 
 from libs import filemanager
@@ -18,6 +19,7 @@ for kv_file in os.listdir(KV_DIR):
 
 
 class SpectrumApp(MDApp):
+    now_playing = ListProperty() # Image, Title, Artists, Path
     def __init__(self, **kwargs):
         super(SpectrumApp, self).__init__(**kwargs)
         self.theme_cls.primary_palette = "Purple"

@@ -1,0 +1,60 @@
+<PlayerCard>:
+    md_bg_color: app.theme_cls.primary_color
+    size_hint_y: None
+    height: '90dp'
+
+    MDBoxLayout:
+        adaptive_size: True
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        Image:
+            texture: app.now_playing[0] if len(app.now_playing) > 0 else None
+            size_hint: None, None
+            size: ('90dp', '90dp')
+        # Image
+
+    MDRelativeLayout:
+        MDProgressBar:
+            value: 0
+            pos_hint: {'x': 0, 'top': 1}
+            color: app.theme_cls.accent_color
+            size_hint_y: None
+            height: '0dp'
+        MDBoxLayout:
+            orientation: 'vertical'
+            pos_hint: {'x': 0, 'center_y': 0.5}
+            adaptive_height: True
+            padding: '10dp'
+            spacing: '10dp'
+
+            MDLabel:
+                text: app.now_playing[1] if len(app.now_playing) > 0 else 'Unknown Title'
+                font_size: '20sp'
+                shorten: True
+                shorten_from: 'right'
+                adaptive_height: True
+                color: 1, 1, 1, 1
+            # MDLabel
+
+            MDLabel:
+                adaptive_height: True
+                text: app.now_playing[2] if len(app.now_playing) > 0 else 'Unknown Artist'
+                font_size: '18sp'
+                shorten: True
+                shorten_from: 'right'
+                color: 1, 1, 1, 1
+    MDBoxLayout:
+        adaptive_size: True
+        pos_hint: {'center_x': .5, 'center_y': .5}
+        MDIconButton:
+            icon: 'skip-previous'
+            theme_text_color: 'Custom'
+            text_color: 1, 1, 1, 1
+        MDIconButton:
+            icon: 'play'
+            theme_text_color: 'Custom'
+            text_color: 1, 1, 1, 1
+        MDIconButton:
+            icon: 'skip-next'
+            theme_text_color: 'Custom'
+            text_color: 1, 1, 1, 1

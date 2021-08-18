@@ -1,30 +1,34 @@
 #: import SongsTab libs.baseclass.tabs.SongsTab
 #: import AlbumsTab libs.baseclass.tabs.AlbumsTab
 #: import ArtistsTab libs.baseclass.tabs.ArtistsTab
+#: import PlayerCard libs.baseclass.player_card.PlayerCard
 
 
 <MusicScreen>:
     name: 'music_screen'
+    MDBoxLayout:
+        orientation: 'vertical'
 
-    MDTabs:
-        id: music_screen_tabs
-        lock_swiping: True
-        tab_hint_x: True
-        tab_indicator_anim: True
-        anim_duration: 0.1
-        text_color_active: app.theme_cls.accent_color
-        text_color_normal: (1, 1, 1, 1)
+        MDTabs:
+            id: music_screen_tabs
+            lock_swiping: True
+            tab_hint_x: True
+            tab_indicator_anim: True
+            anim_duration: 0.1
+            text_color_active: app.theme_cls.accent_color
+            text_color_normal: (1, 1, 1, 1)
 
-        AlbumsTab:
-        # AlbumsTab
+            AlbumsTab:
+            # AlbumsTab
 
-        SongsTab:
-            id: songs_tab
-        # SongsTab
+            SongsTab:
+                id: songs_tab
+            # SongsTab
 
-        ArtistsTab:
-        # ArtistsTab
-    # MDTabs
+            ArtistsTab:
+            # ArtistsTab
+        # MDTabs
+        PlayerCard:
 # MusicScreen
 
 

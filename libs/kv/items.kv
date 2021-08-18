@@ -14,6 +14,9 @@
 
             on_release:
                 print(root.file_path)
+                # if len(app.now_playing) == 0: app.now_playing.append(root.image_texture)
+                # else: app.now_playing = root.image_texture, root.title, root.artist
+                app.now_playing = root.image_texture, root.title, root.artist, root.file_path
 
             MDBoxLayout:
                 padding: '5dp'
