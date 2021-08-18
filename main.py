@@ -1,6 +1,14 @@
 import os
-from kivymd.app import MDApp
+import threading
+from io import BytesIO
+
+from kivy.clock import mainthread
+from kivy.core.image import Image as CoreImage
 from kivy.lang.builder import Builder
+from kivymd.app import MDApp
+from mutagen import File
+
+from libs import filemanager
 
 KV_DIR = "libs/kv"
 
@@ -21,6 +29,46 @@ class SpectrumApp(MDApp):
                 self.root.ids.main_card.ids.
                 music_screen.ids.music_screen_tabs.
                 get_tab_list()[1]))
+        threading.Thread(target=self.populate_songs_tab, daemon=True).start()
+
+    @mainthread
+    def populate_songs_tab(self):
+        all_songs = filemanager.extract_files('D:/Naren/Songs/BTS', 'mp3')
+        for song_path in all_songs:
+            title, artist, image_texture = self.get_song_details(song_path)
+            self.root.ids.main_card.ids.music_screen.ids.songs_tab.ids.songs_tab_rv.data.append(
+                {
+                    'title': title,
+                    'artist': artist,
+                    'image_texture': image_texture,
+                    'file_path': song_path
+                }
+            )
+        self.root.ids.main_card.ids.music_screen.ids.songs_tab.ids.songs_tab_rv.data.sort(key=lambda x: x.get('title').capitalize())
+    def get_song_details(self, file_path):
+        detail = File(file_path)
+
+        artist = 'Unknown Artist'
+        title = None
+        image_texture = None
+
+        if 'TIT2' in detail:
+            title = detail['TIT2'][0]
+        else:
+            title = os.path.basename(file_path)[:-4]
+        if 'TPE1' in detail:
+            artist = detail['TPE1'][0]
+       
+        if 'APIC:' in  detail:
+            data = detail['APIC:'].data
+            image_texture = CoreImage(BytesIO(data), ext='png').texture
+        else:
+            with open('assets/images/song.png', 'rb') as file:
+                data = file.read()
+            image_texture = CoreImage(BytesIO(data), ext='png').texture
+        
+        return title, artist, image_texture
+
 
     def on_pause(self):
         return True
