@@ -1,0 +1,34 @@
+<Menu>:
+    orientation: 'vertical'
+    adaptive_size: True
+    spacing: '10dp'
+
+    MenuButton:
+        text: '    [b]Music[/b]    '
+        icon: 'music'
+        on_press:
+            root.parent.ids.main_card.ids.screen_manager.current = 'music'
+    # MenuButton
+
+    MenuButton:
+        text: '    [b]Favorites[/b]'
+        icon: 'heart'
+        on_press:
+            root.parent.ids.main_card.ids.screen_manager.current = 'favorites'
+    # MenuButton
+
+    MenuButton:
+        text: '    [b]Settings[/b] '
+        icon: 'cog'
+        on_press:
+            root.parent.ids.main_card.ids.screen_manager.current = 'settings'
+    # MenuButton
+# Menu
+
+
+<MenuButton@MDRoundFlatIconButton>:
+    line_color: (0, 0, 0, 0)
+    icon_color: (1, 1, 1, 1)
+    text_color: (1, 1, 1, 1)
+    font_size: '18dp'
+# MenuButton

@@ -1,0 +1,12 @@
+{
+    "home": {
+        "import": "from libs.uix.baseclass.screens.home_screen import HomeScreen",
+        "kv": "libs/uix/kv/screens/home_screen.kv",
+        "object": "HomeScreen()"
+    },
+    "player": {
+        "import": "from libs.uix.baseclass.screens.player_screen import PlayerScreen",
+        "kv": "libs/uix/kv/screens/player_screen.kv",
+        "object": "PlayerScreen()"
+    }
+}

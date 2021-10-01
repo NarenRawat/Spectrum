@@ -1,0 +1,46 @@
+<MusicScreen>:
+    MDBottomNavigation:
+        panel_color: app.theme_cls.primary_color
+        text_color_active: app.theme_cls.accent_color
+        text_color_normal: app.theme_cls.opposite_bg_dark
+        id: bottom_navigation
+
+        MDBottomNavigationItem:
+            name: "songs"
+            icon: 'music-note'
+            text: 'Songs'
+            RecycleView:
+                id: rv
+                key_viewclass: 'viewclass'
+                do_scroll_x: False
+                always_overscroll: False
+                smooth_scroll_end: 10
+
+                RecycleBoxLayout:
+                    default_size: None, dp(65)
+                    default_size_hint: 1, None
+                    size_hint_y: None
+                    height: self.minimum_height
+                    spacing: '2dp'
+                    orientation: 'vertical'
+                # RecycleBoxLayout
+            # RecycleView
+
+        MDBottomNavigationItem:
+            name: "albums"
+            icon: 'music-box-multiple-outline'
+            text: 'Albums'
+
+            MDLabel:
+                text: str(bottom_navigation.ids.bottom_panel.height)
+                halign: 'center'
+
+        MDBottomNavigationItem:
+            name: "artists"
+            icon: 'account-outline'
+            text: 'Artists'
+
+            MDLabel:
+                text: self.parent.text
+                halign: 'center'
+

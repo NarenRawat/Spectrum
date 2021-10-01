@@ -1,0 +1,28 @@
+<SettingsScreen>:
+
+    ScrollView:
+
+        MDGridLayout:
+            adaptive_height: True
+            cols: 1
+            padding: '10dp'
+            spacing: '10dp'
+
+            MDBoxLayout:
+                orientation: 'horizontal'
+                adaptive_height: True
+                padding: '5dp'
+                spacing: '10dp'
+
+                MDLabel:
+                    text: 'Dark mode'
+                    font_size: '20dp'
+                # MDLabel
+
+                MDSwitch:
+                    on_active: app.toggle_theme_style(*args)
+                # MDSwitch
+            # MDBoxLayout
+        # MDGridLayout
+    # ScrollView
+# SettingsScreen

@@ -1,0 +1,17 @@
+{
+    "music": {
+        "import": "from libs.uix.baseclass.screens.music_screen import MusicScreen",
+        "kv": "libs/uix/kv/screens/music_screen.kv",
+        "object": "MusicScreen()"
+    },
+    "favorites": {
+        "import": "from libs.uix.baseclass.screens.favorites_screen import FavoritesScreen",
+        "kv": "libs/uix/kv/screens/favorites_screen.kv",
+        "object": "FavoritesScreen()"
+    },
+    "settings": {
+        "import": "from libs.uix.baseclass.screens.settings_screen import SettingsScreen",
+        "kv": "libs/uix/kv/screens/settings_screen.kv",
+        "object": "SettingsScreen()"
+    }
+}

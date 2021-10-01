@@ -1,0 +1,69 @@
+<SongItem>:
+    size_hint_y: None
+    height: '65dp'
+    spacing: '2dp'
+    orientation: 'vertical'
+
+    MDBoxLayout:
+        orientation: 'horizontal'
+        SongItemRippleWidget:
+            orientation: 'horizontal'
+            ripple_color: app.theme_cls.opposite_bg_dark
+            spacing: '10dp'
+
+            on_release:
+                app.media_player.load(root.path)
+                app.media_player.title = root.title
+                app.media_player.artist = root.artist
+                app.media_player.length = root.length
+                app.media_player.image_texture = root.image_texture
+                app.media_player.is_favorite = root.is_favorite
+
+            MDBoxLayout:
+                padding: '5dp'
+                adaptive_size: True
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+                Image:
+                    # source: 'assets/images/song.png'
+                    texture: root.image_texture
+                    size_hint: None, None
+                    size: ('60dp', '60dp')
+                # Image
+            # MDBoxLayout
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                adaptive_height: True
+                spacing: '3dp'
+
+                MDLabel:
+                    text: root.title
+                    font_size: '20sp'
+                    shorten: True
+                    shorten_from: 'right'
+                    adaptive_height: True
+                # MDLabel
+
+                MDLabel:
+                    adaptive_height: True
+                    text: root.artist
+                    font_size: '18sp'
+                    shorten: True
+                    shorten_from: 'right'
+                # MDLabel
+            # MDBoxLayout
+        # SongItemRippleWidget
+
+        MDIconButton:
+            pos_hint: {'center_y': 0.5}
+            icon: 'dots-vertical'
+            on_release:
+                print(root.title)
+        # MDIconButton
+    # MDBoxLayout
+    
+    MDSeparator:
+    # MDSeparator
+# SongItem

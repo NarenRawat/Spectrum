@@ -1,0 +1,28 @@
+#: import Menu libs.uix.baseclass.menu.Menu
+#: import MainCard libs.uix.baseclass.main_card.MainCard
+
+
+<HomeScreen>:
+    md_bg_color: [.49]+app.theme_cls.primary_color[1:3] + [1]
+
+
+    Menu:
+        id: menu
+        pos_hint: {'center_y': 0.5}
+    # Menu
+
+    Button:
+        text: ''
+        size_hint: (None, None)
+        size: main_card.size
+        pos: main_card.pos
+        background_normal: ''
+        background_color: (0, 0, 0, 0)
+        disabled: True
+    # Button
+
+    MainCard:
+        id: main_card
+    # MainCard
+
+# HomeScreen

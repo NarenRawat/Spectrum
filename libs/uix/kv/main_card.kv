@@ -1,0 +1,134 @@
+#: import SlideTransition kivy.uix.screenmanager.SlideTransition
+
+
+<MainCard>:
+    x: 0
+    y: 0
+    elevation: 100
+    size_hint: (1, 1)
+    orientation: 'vertical'
+    md_bg_color: app.theme_cls.bg_normal
+
+    # Toolbar
+    MDBoxLayout:
+        id: toolbar
+        adaptive_height: True
+        orientation: 'horizontal'
+        spacing: '10dp'
+        md_bg_color: app.theme_cls.primary_color
+        pos_hint: {'x': 0, 'top': 1}
+
+        MDIconButton:
+            icon: 'menu'
+            on_release:
+                root.toggle()
+        # MDIconButton
+
+        MDLabel:
+            id: toolbar_title
+            text: 'Music'
+            bold: True
+            font_size: '20sp'
+        # MDLabel
+    # MDBoxLayout
+    # Toolbar
+
+
+    ScreenManager:
+        id: screen_manager
+        top: toolbar.y
+        pos_hint: {'x': 0}
+        size_hint_y: None
+        height: root.height - toolbar.height
+        transition: SlideTransition(duration=0.1, direction='right')
+        on_current:
+            toolbar_title.text = self.current.capitalize()
+    # ScreenManager
+
+    Button:
+        text: ''
+        size_hint: (None, None)
+        size: player.size
+        pos: player.pos
+        background_normal: ''
+        background_color: (0, 0, 0, 0)
+        disabled: True
+    # Button
+
+    MDBoxLayout:
+        id: player
+        size_hint: None, None
+        height: '65dp'
+        width: root.width - 20
+        x: (root.width - self.width) / 2 + root.x
+        y: dp(66)
+        md_bg_color: app.theme_cls.primary_color
+        padding: ['3dp', 0]
+        radius: ['5dp']
+
+        ClickableBoxLayout:
+            radius: self.parent.radius
+            on_release: app.root.current = 'player'
+            spacing: '10dp'
+            Image:
+                # source: 'assets/images/song.png'
+                texture: app.media_player.image_texture
+                size_hint: None, None
+                size: (self.parent.parent.height*.9,)*2
+                # radius: self.parent.parent.radius
+                pos_hint: {'center_x': .5, 'center_y': .5}
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                adaptive_height: True
+                spacing: '3dp'
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                MDLabel:
+                    text: app.media_player.title
+                    adaptive_height: True
+                    font_size: '20sp'
+                    bold: True
+                    shorten: True
+                    shorten_from : 'right'
+                    theme_text_color: 'Custom'
+                    text_color: 1, 1, 1, 1
+                MDLabel:
+                    text: app.media_player.artist
+                    adaptive_height: True
+                    font_size: '18sp'
+                    shorten: True
+                    shorten_from : 'right'
+                    theme_text_color: 'Custom'
+                    text_color: 1, 1, 1, 1
+        MDBoxLayout:
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            adaptive_size: True
+            padding: '5dp'
+            canvas:
+                Color:
+                    rgba: 0, 0, 0, .2
+                Line:
+                    width: dp(2)
+                    circle:
+                        (self.center_x,
+                        self.center_y,self.parent.children[0].height/2 - dp(2), 0, 360)
+                Color:
+                    rgba: (0, 0, 0, 0) if app.media_player.percent_played == 0 else app.theme_cls.accent_color
+                Line:
+                    width: dp(2)
+                    circle:
+                        (self.center_x,
+                        self.center_y,self.parent.children[0].height/2 - dp(2), 0, app.media_player.percent_played * 360)
+            MDIconButton:
+                icon: 'pause' if app.media_player.is_playing else 'play'
+                theme_text_color: 'Custom'
+                text_color: 1, 1, 1, 1
+                on_release:
+                    if app.media_player.is_playing: app.media_player.pause()
+                    else: app.media_player.unpause()
+        
+
+<ClickableBoxLayout>:
+
+
+# MainCard
